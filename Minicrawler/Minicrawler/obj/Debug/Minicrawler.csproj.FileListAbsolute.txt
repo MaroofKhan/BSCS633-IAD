@@ -1,0 +1,11 @@
+c:\users\maroof khan\documents\visual studio 2013\Projects\Minicrawler\Minicrawler\bin\Debug\Minicrawler.exe.config
+c:\users\maroof khan\documents\visual studio 2013\Projects\Minicrawler\Minicrawler\bin\Debug\Minicrawler.exe
+c:\users\maroof khan\documents\visual studio 2013\Projects\Minicrawler\Minicrawler\bin\Debug\Minicrawler.pdb
+c:\users\maroof khan\documents\visual studio 2013\Projects\Minicrawler\Minicrawler\bin\Debug\Internet Application Development.exe
+c:\users\maroof khan\documents\visual studio 2013\Projects\Minicrawler\Minicrawler\obj\Debug\Minicrawler.csprojResolveAssemblyReference.cache
+c:\users\maroof khan\documents\visual studio 2013\Projects\Minicrawler\Minicrawler\obj\Debug\Minicrawler.MainForm.resources
+c:\users\maroof khan\documents\visual studio 2013\Projects\Minicrawler\Minicrawler\obj\Debug\Minicrawler.Properties.Resources.resources
+c:\users\maroof khan\documents\visual studio 2013\Projects\Minicrawler\Minicrawler\obj\Debug\Minicrawler.csproj.GenerateResource.Cache
+c:\users\maroof khan\documents\visual studio 2013\Projects\Minicrawler\Minicrawler\obj\Debug\Minicrawler.exe
+c:\users\maroof khan\documents\visual studio 2013\Projects\Minicrawler\Minicrawler\obj\Debug\Minicrawler.pdb
+c:\users\maroof khan\documents\visual studio 2013\Projects\Minicrawler\Minicrawler\bin\Debug\Internet Application Development.pdb

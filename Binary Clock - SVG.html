@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<body>
+<svg id="svg_division" width="430" height="300"></svg>
+<script>
+    const onStyle  = {
+        fill : "red",
+        opacity : "0.50" 
+    }
+    const offStyle  = {
+        fill : "gray",
+        opacity : "0.25" 
+    }
+    
+    function addRectangles () {
+        const svgns = "http://www.w3.org/2000/svg";
+        const svgDivision = document.getElementById('svg_division');
+        const id = ["hour_left", "hour_right", "minute_left", "minute_right", "second_left", "second_right"];
+        const width = 40, height = 40;
+        const radius = 10;
+        const off = "fill:gray;opacity:0.25";
+        for (i = 0; i < id.length; i++) {
+            var length = (i % 2 == 0) ? ((i == 0) ? 2 : 3) : 4;
+            var x = (10 * (i + 1)) + (width * i);
+            for (j = 0; j < length; j++) {
+                var rect = document.createElementNS(svgns, 'rect');
+                var y = (300 - ((15 + height) * (j + 1)));
+                var _id = (id[i] + "_" + j)
+                rect.setAttributeNS(null, 'id', _id);
+                rect.setAttributeNS(null, 'x', x);
+                rect.setAttributeNS(null, 'y', y);
+                rect.setAttributeNS(null, 'height', height);
+                rect.setAttributeNS(null, 'width', width);
+                rect.setAttributeNS(null, 'rx', radius);
+                rect.setAttributeNS(null, 'ry', radius);
+                rect.setAttributeNS(null, 'style', off);
+                svgDivision.appendChild(rect);
+            }
+        }
+    }
+    
+    function turnOn (block) {
+        block.style.fill = onStyle.fill;
+        block.style.opacity = onStyle.opacity;
+    }
+    
+    function turnOff (block) {
+        block.style.fill = offStyle.fill;
+        block.style.opacity = offStyle.opacity;
+    }
+    
+    function fillTheClock () {
+        var currentTime = new Date();
+        
+        var currentHours = currentTime.getHours();
+        var currentMinutes = currentTime.getMinutes();
+        var currentSeconds = currentTime.getSeconds();
+
+        fill('hours', currentHours);
+        fill('minutes', currentMinutes);
+        fill('seconds', currentSeconds);
+        
+    }
+    
+    function fill (key, time) {
+        var binaryTime = binary(time);
+        switch (key) {
+            case 'hours':
+                fillHours(binaryTime);
+                break;
+            case 'minutes':
+                fillMinutes(binaryTime);
+                break;
+            case 'seconds':
+                fillSeconds(binaryTime);
+                break;
+        }
+    }
+    
+    function fillHours (binaryTime) {
+        for (var i = 0; i < 2 ; i++) {
+            var id;
+            var values;
+            var limit;
+            if (i == 0) {
+                id = "hour_left";
+                values = (binaryTime.left.split('')).reverse();
+                limit = 2;
+            } else {
+                id = "hour_right";
+                values = (binaryTime.right.split('')).reverse();
+                limit = 4;
+            }
+            
+            for (var j = 0; j < limit ; j++) {
+                var elementID = id + "_" + j;
+                var element = document.getElementById(elementID);
+                if (values[j] == '1') turnOn(element);
+                else turnOff(element);
+            }
+        }
+    }
+    
+    function fillMinutes (binaryTime) {
+        for (var i = 0; i < 2 ; i++) {
+            var id;
+            var values;
+            var limit;
+            if (i == 0) {
+                id = "minute_left";
+                values = (binaryTime.left.split('')).reverse();
+                limit = 3;
+            } else {
+                id = "minute_right";
+                values = (binaryTime.right.split('')).reverse();
+                limit = 4;
+            }
+            
+            for (var j = 0; j < limit ; j++) {
+                var elementID = id + "_" + j;
+                var element = document.getElementById(elementID);
+                if (values[j] == '1') turnOn(element);
+                else turnOff(element);
+            }
+        }
+    }
+    
+    function fillSeconds (binaryTime) {
+        for (var i = 0; i < 2 ; i++) {
+            var id;
+            var values;
+            var limit;
+            if (i == 0) {
+                id = "second_left";
+                values = (binaryTime.left.split('')).reverse();
+                limit = 3;
+            } else {
+                id = "second_right";
+                values = (binaryTime.right.split('')).reverse();
+                limit = 4;
+            }
+            
+            for (var j = 0; j < limit ; j++) {
+                var elementID = id + "_" + j;
+                var element = document.getElementById(elementID);
+                if (values[j] == '1') turnOn(element);
+                else turnOff(element);
+            }
+        }
+    }
+    
+    function binary (time) {
+        var numbers = split(time);
+        var left = toBinary(numbers.left);
+        var right = toBinary(numbers.right);
+        return {
+            left : left,
+            right : right
+        }
+    }
+    
+    function toBinary (_number) {
+        return (_number >>> 0).toString(2);
+    }
+    
+    function split (time) {
+        var _time = "" + (time / 10);
+        _time = _time.split('.');
+        var left = Number(_time[0]);
+        var right = Number(_time[1]);
+        return {
+            left : left,
+            right: right
+        };
+    }
+    
+    addRectangles();
+    setInterval(fillTheClock, 1000);
+    
+</script>
+</body>
+</html>
