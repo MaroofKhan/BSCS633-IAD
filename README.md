@@ -1,4 +1,4 @@
-## BSCS633-Internet Application Development
+## BSCS633 - Internet Application Development
 Course# BSCS633, DCS, University of Karachi.
 <br />
 Instructor: Zain Abbas.
